@@ -1,9 +1,19 @@
 set nocompatible
+filetype off
 
-" 
-" Pathogen, for plugin management
+set rtp+=~/.vim/bundle/vundle
+call vundle#rc()
+
 "
-call pathogen#infect()
+" Vundle bundles. Bundles of Vundle?
+"
+
+" Required
+Bundle 'gmarik/vundle'
+" Git Helper
+Bundle 'tpope/vim-fugitive'
+" Colors!
+Bundle 'sickill/vim-monokai'
 
 "
 " Text Formatting
@@ -26,15 +36,14 @@ set laststatus=2
 set statusline+=%F  " Show me what I am viewing
 set background=dark " Eye frying prevention
 set t_Co=256        " Force 256 colors
-colorscheme fu
+colorscheme Monokai
 
 "
 " Powerline Statusline
 " Install instructions: http://lokaltog.github.com/powerline/overview.html
 " 
-python from powerline.ext.vim import source_plugin; source_plugin()
+set rtp+=/home/jfa/.local/lib/python2.7/site-packages/powerline/bindings/vim
 let Powerline_symbols = 'fancy'
 
 syntax on
 filetype plugin indent on
-
