@@ -11,6 +11,7 @@
 "   -> Vundle
 "   -> File Options
 "   -> Text Formatting
+"   -> Keymapping
 "   -> Visual Options
 "   -> Powerline Statusline
 ""
@@ -54,6 +55,13 @@ set tabstop=4		" Reasonable tab length
 set shiftwidth=4
 set expandtab		" Make them spaces
 set nosmarttab
+
+"""
+" -> Keymapping
+"""  
+nnoremap <C-t>      :tabnew<CR>
+nnoremap <C-w>      :tabclose<CR>
+inoremap <C-t>      <Esc>:tabnew<CR>
 
 """
 " -> Visual Options
