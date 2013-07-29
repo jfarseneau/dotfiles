@@ -4,7 +4,7 @@
 "   http://about.me/thejf - jf.arseneau@gmail.com
 "
 " Version:
-"   1.0 - 2013/02/11
+"   1.1 - 2013/06/24
 "
 " Sections:
 "   -> General
@@ -14,6 +14,7 @@
 "   -> Keymapping
 "   -> Visual Options
 "   -> Powerline Statusline
+"   -> SyntaxComplete
 ""
 
 """
@@ -25,7 +26,6 @@ filetype off
 set history=1000    " Lines of history for vim to remember
 set autoread        
 set encoding=utf-8  " UTF-8 support, 21st century-style
-
 
 """
 " -> Vundle
@@ -39,6 +39,10 @@ Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-fugitive'
 " Colours!
 Bundle 'sickill/vim-monokai'
+Bundle 'SyntaxComplete'
+Bundle 'othree/javascript-libraries-syntax.vim'
+Bundle 'Syntastic'
+Bundle 'scrooloose/nerdtree'
 
 """
 " -> File Options
@@ -51,8 +55,8 @@ set noswapfile
 " -> Text Formatting
 "
 set autoindent		" automatically indent new lines
-set tabstop=4		" Reasonable tab length
-set shiftwidth=4
+set tabstop=2		" Reasonable tab length
+set shiftwidth=2
 set expandtab		" Make them spaces
 set nosmarttab
 
@@ -62,6 +66,8 @@ set nosmarttab
 nnoremap <C-t>      :tabnew<CR>
 nnoremap <C-w>      :tabclose<CR>
 inoremap <C-t>      <Esc>:tabnew<CR>
+map      <C-n>      :NERDTreeToggle<CR> 
+map <A-Left>   :gt<CR>
 
 """
 " -> Visual Options
@@ -81,8 +87,18 @@ colorscheme Monokai
 " -> Powerline Statusline
 " Install instructions: http://lokaltog.github.com/powerline/overview.html
 """
-set rtp+=/home/jfa/.local/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 let Powerline_symbols = 'fancy'
+
+"""
+" -> SyntaxComplete
+"""
+if has("autocmd") && exists("+omnifunc")
+  autocmd Filetype *
+    \ if &omnifunc == "" |
+    \   setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
+endif
 
 syntax on
 filetype plugin indent on
